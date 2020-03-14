@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "669219700025",
+    "firebase_url": "https://fmgworldapp.firebaseio.com",
+    "project_id": "fmgworldapp",
+    "storage_bucket": "fmgworldapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669219700025:android:003966f8a42f2a1ad3fce8",
+        "android_client_info": {
+          "package_name": "com.studyappsv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669219700025-e8i2vpdeg8dairv770lsh0feo6sobltr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjuNzhk-tqaVherY-pInSxwAyAPwQz9sg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669219700025-e8i2vpdeg8dairv770lsh0feo6sobltr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

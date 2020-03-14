@@ -1,0 +1,63 @@
+{
+  "name": "studyapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.8.0",
+    "@react-native-community/masked-view": "^0.1.6",
+    "@react-navigation/bottom-tabs": "^5.0.7",
+    "@react-navigation/drawer": "^5.1.1",
+    "@react-navigation/material-bottom-tabs": "^5.0.7",
+    "@react-navigation/native": "^5.0.7",
+    "@react-navigation/stack": "^5.0.8",
+    "react": "16.8.6",
+    "react-native": "0.60.2",
+    "react-native-af-video-player": "^0.2.1",
+    "react-native-easy-downloader": "^0.1.0",
+    "react-native-elements": "^1.2.7",
+    "react-native-firebase": "^5.6.0",
+    "react-native-gesture-handler": "^1.6.0",
+    "react-native-google-places-autocomplete": "^1.4.1",
+    "react-native-keep-awake": "^4.0.0",
+    "react-native-keyboard-aware-scrollview": "^2.1.0",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-native-material-dropdown": "^0.11.1",
+    "react-native-material-textfield": "^0.16.1",
+    "react-native-media-controls": "^1.1.1",
+    "react-native-media-meta": "0.0.10",
+    "react-native-modal-dropdown": "^0.7.0",
+    "react-native-orientation": "^3.1.3",
+    "react-native-paper": "^3.6.0",
+    "react-native-pdf": "^6.0.1",
+    "react-native-progress-bar-animated": "^1.0.6",
+    "react-native-reanimated": "^1.7.0",
+    "react-native-responsive-screen": "^1.3.1",
+    "react-native-safe-area-context": "^0.7.3",
+    "react-native-screens": "^2.0.0-beta.10",
+    "react-native-vector-icons": "^6.6.0",
+    "react-native-video": "^5.0.2",
+    "react-native-virgil-crypto": "^0.5.3",
+    "react-native-webview": "^8.1.2",
+    "react-native-zip-archive": "^5.0.1",
+    "rn-fetch-blob": "^0.12.0",
+    "yarn": "^1.22.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.8.3",
+    "@babel/runtime": "7.8.3",
+    "@react-native-community/eslint-config": "0.0.3",
+    "babel-jest": "24.9.0",
+    "eslint": "6.8.0",
+    "jest": "24.9.0",
+    "metro-react-native-babel-preset": "0.54.1",
+    "react-test-renderer": "16.8.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
