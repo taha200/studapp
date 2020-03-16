@@ -17,6 +17,7 @@ import RNFetchBlob from 'rn-fetch-blob'
 import firebase from 'react-native-firebase'
 import { virgilCrypto } from 'react-native-virgil-crypto';
 import AsyncStorage from '@react-native-community/async-storage';
+import Orientation from 'react-native-orientation'
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height
@@ -36,7 +37,8 @@ class OfflineFiles extends Component{
        sig:'',
        key:'',
        check:'',
-       show:true
+       show:true,
+       noFiles:true
       }
      this.updateIndex = this.updateIndex.bind(this)
 
@@ -54,7 +56,9 @@ class OfflineFiles extends Component{
            }
          })
          this.setState({
-           videos:abc
+           videos:abc,
+           noFiles:(abc.length===0)?true:false
+
          })
           })
    }
@@ -72,7 +76,9 @@ RNFetchBlob.fs.ls(this.state.pathpdf).then((files) => {
        }
      })
      this.setState({
-       pdf:abc
+       pdf:abc,
+       noFiles:(abc.length===0)?true:false
+
      })
       })
    }
@@ -87,8 +93,13 @@ RNFetchBlob.fs.ls(this.state.pathpdf).then((files) => {
     
     }
   }
+  componentWillUnmount(){
+    this._unsubscribe();
+  }
   componentDidMount(){
-     
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      Orientation.lockToPortrait()
+    });
 var TRACK_FOLDER = RNFetchBlob.fs.dirs.DownloadDir
 console.log(TRACK_FOLDER)
 RNFetchBlob.fs.ls(this.state.pathvideos).then((files) => {
@@ -100,7 +111,8 @@ RNFetchBlob.fs.ls(this.state.pathvideos).then((files) => {
        }
      })
      this.setState({
-       videos:abc
+       videos:abc,
+       noFiles:(abc.length===0)?true:false
      })
       })
 const base64= RNFetchBlob.base64
@@ -208,12 +220,37 @@ loadDat=()=>{
 
     </ImageBackground>
     {(this.state.show)?
+    (this.state.noFiles)?
+    <View style={{justifyContent:'center',alignItems:"center",width:wp('100%'),marginTop:20}}>
+      <Icon
+        name='folder'
+        type='entypo'
+        color='black'
+        size={50}
+        containerStyle={{alignSelf:'center'}}
+      />
+      <Text style={{fontSize:20,color:'black'}}>No Files Yet</Text>
+        </View>
+    :
+      (this.state.noFiles)?
+      <View style={{justifyContent:'center',alignItems:"center",width:wp('100%'),marginTop:20}}>
+      <Icon
+        name='folder'
+        type='entypo'
+        color='black'
+        size={50}
+        containerStyle={{alignSelf:'center'}}
+      />
+      <Text style={{fontSize:20,color:'black'}}>No Files Yet</Text>
+        </View>
+      :
      <FlatList 
               
      data={this.state.videos}
  showsVerticalScrollIndicator={false}
  contentContainerStyle={{alignSelf:'center'}}
      renderItem={({item,index})=>(
+  
 <View style={{width:wp('95%'),height:hp('12%'),backgroundColor:(index%2===0)?"#548DFF":"#009EFF",borderRadius:12,marginTop:5,flexDirection:'row',justifyContent:'space-between'}}>
       <Text style={{textAlignVertical:'center',fontSize:20,color:'white',marginLeft:10}}>{item.title}.mp4</Text>
       <Icon

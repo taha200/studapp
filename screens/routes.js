@@ -45,11 +45,11 @@ class HomeStack extends React.Component{
 class SRLS extends React.Component{
   render(){
  return (
-   <Stack.Navigator initialRouteName="Splash" headerMode="none">
-     <Stack.Screen name="Splash" component={Splash} />
+   <Stack.Navigator initialRouteName="Sign" headerMode="none">
      <Stack.Screen name="Login" component={Login} />
      <Stack.Screen name="SignUp" component={SignUp} />
      <Stack.Screen name="Sign" component={Sign} />
+     <Stack.Screen name="Tab" component={App}   />
 
 
    </Stack.Navigator>
@@ -111,19 +111,11 @@ export default class Auth extends React.Component{
  return (
   <NavigationContainer>
 
-   <Stack.Navigator  headerMode="none" initialRouteName={(this.props.vala===null)?"Auth":"Tab"} >
-    {(this.props.vala===null) ? (
-  <>
-      <Stack.Screen name="Auth" component={SRLS} />
+   <Stack.Navigator  headerMode="none" >
+   <Stack.Screen name="Splash" component={Splash} />
+   <Stack.Screen name="Auth" component={SRLS} />
+   <Stack.Screen name="Tab" component={App} />
 
-  
-  </>
-) : (
-  <>
-      <Stack.Screen name="Tab" component={App} />
-
-  </>)
-  }
    </Stack.Navigator>
    </NavigationContainer>
 

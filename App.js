@@ -53,17 +53,7 @@ import Orientation from 'react-native-orientation'
      };
    }
 
-  getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('uXEr')
-           var abc=JSON.parse(value)
-           this.setState({
-             val:abc
-           })
-    } catch(e) {
-      // error reading value
-    }
-  }
+ 
   async componentDidMount(){ 
     try {
       const granted = await PermissionsAndroid.request(
@@ -89,7 +79,6 @@ import Orientation from 'react-native-orientation'
           console.warn(err);
       }
     Orientation.lockToPortrait()
-    this.getData();
   
 
     }
@@ -125,7 +114,7 @@ import Orientation from 'react-native-orientation'
       //     toolbar={this.renderToolbar()}
       //   />
       // </View>
-      <Download vala={this.state.val} />
+      <Download />
       );
   }
 }

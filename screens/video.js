@@ -25,9 +25,9 @@ import Video from 'react-native-video'
 import MediaControls, { PLAYER_STATES } from 'react-native-media-controls';
 //Media Controls to control Play/Pause/Seek and full screen
 import firebase from 'react-native-firebase'
-import Vid from './../video2.mp4'
 import MediaMeta from 'react-native-media-meta';
 import { zip, unzip, unzipAssets, subscribe,zipWithPassword ,unzipWithPassword} from 'react-native-zip-archive'
+import Orientation from 'react-native-orientation'
 
  class Videosa extends React.Component{
   videoPlayer;
@@ -101,7 +101,7 @@ import { zip, unzip, unzipAssets, subscribe,zipWithPassword ,unzipWithPassword} 
   
   onFullScreen = () => {
     if (this.state.screenType == 'contain')
-      this.setState({ screenType: 'cover' });
+      this.setState({ screenType: 'stretch' });
     else this.setState({ screenType: 'contain' });
   };
   renderToolbar = () => (
@@ -118,7 +118,9 @@ import { zip, unzip, unzipAssets, subscribe,zipWithPassword ,unzipWithPassword} 
 }
  
   componentDidMount(){
-  
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      Orientation.lockToLandscape()
+    });
 var path=`${RNFetchBlob.fs.dirs.DownloadDir}/studapp/videos/${this.props.route.params.file}.zip`
 var path1=RNFetchBlob.fs.dirs.DownloadDir
 unzipWithPassword(path,path1,'H3LL0','STANDARD')
@@ -156,6 +158,8 @@ alert(error)})
 
   }
   componentWillUnmount(){
+    this._unsubscribe();
+
     var pth=`${RNFetchBlob.fs.dirs.DownloadDir}/${this.props.route.params.file}.mp4`
     RNFetchBlob.fs.unlink(pth)
 .then(() => console.log("Oh yeah"))

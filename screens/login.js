@@ -53,9 +53,7 @@ getData = async () => {
     }).then(res => res.json()).then((data)=>{
        this.storeData(data.doc)
        this.getData();
-       this.props.navigation.navigate("Auth",{
-         screen:"Tab"
-       })
+       this.props.navigation.navigate("Tab")
     }).catch((error)=>{
       alert("catch")
        console.log(error)

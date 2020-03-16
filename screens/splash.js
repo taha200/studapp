@@ -12,7 +12,7 @@ import {
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {TextField} from 'react-native-material-textfield'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 const width = Dimensions.get('window').width;
@@ -20,10 +20,34 @@ const height = Dimensions.get('window').height
 
 
 class Splash extends Component{
+  state={
+    vala:''
+  }
+  getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('uXEr')
+           var abc=JSON.parse(value)
+           
+           this.setState({
+             val:abc
+           })
+    } catch(e) {
+      // error reading value
+    }
+  }
 componentDidMount(){
+  this.getData();
   setTimeout(()=>{
-    this.props.navigation.navigate('Sign')
-  },5000)
+    if(this.state.val===null){
+      this.props.navigation.navigate('Auth')
+
+    }
+    else{
+      this.props.navigation.navigate('Tab')
+
+    }
+  },8000)
+
 }
     render(){
         return (
