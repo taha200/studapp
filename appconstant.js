@@ -1,1 +1,1 @@
-export default BaseUrl = "http://88.198.215.145:5001"
+export default BaseUrl = ""
